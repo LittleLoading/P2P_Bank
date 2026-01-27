@@ -1,5 +1,5 @@
 from Response import Response
-from commands import BankCode, AccountCreate
+from Commands import BankCode, AccountCreate
 
 
 class BankController:
