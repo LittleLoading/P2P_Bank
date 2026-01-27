@@ -71,7 +71,3 @@ class Server:
         self.ui.update_user_list(formatted_users)
         Logging.log(user=address, command=None, status="DISCONNECTED", message="User was disconnected.")
         self.ui.add_log(f"Client {address} disconnected.")
-
-
-
-
