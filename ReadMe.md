@@ -5,7 +5,7 @@ loggs and configuration files for connection.
 ## Used Libraries
 * mysql
     ```python
-    
+    pip install mysql-connector-python
   ```
 
 
