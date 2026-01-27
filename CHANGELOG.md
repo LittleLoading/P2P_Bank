@@ -12,4 +12,4 @@
 * BankWatcher adding more format to the window. Split it into two, logs and list of clients connected.
 * BankWatcher docs for method update_user_list
 * Server added needed attributes, like ui, timeout and list of active users. Completely rewrote method handle_client. Most logic remains same.
-
+* JsonParser changed method to be more usable.

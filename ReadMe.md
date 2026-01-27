@@ -26,4 +26,5 @@ loggs and configuration files for connection.
 
 ### AI chats
 * About logs - [chat](https://gemini.google.com/app/c79f906a86f557c3?hl=cs)
+* Upgraded method for searching json files - [chat](https://gemini.google.com/app/b5fe04a1df9a980e)
   
