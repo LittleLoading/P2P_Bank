@@ -1,5 +1,5 @@
 from Network.Client import ProxyClient
-from Response import Response
+from Core.Response import Response
 
 
 def execute(raw_parts, config, db, full_raw_command):
