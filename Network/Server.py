@@ -1,6 +1,7 @@
 import socket
 import threading
 from Core.Response import Response
+from Core.Logging import Logging
 
 
 class Server:
@@ -50,19 +51,24 @@ class Server:
                         if not data:
                             break
                         message = data.decode('utf-8').strip()
+                        Logging.log(user=address, command=message, status="RECEIVED", message="Command is being proceeded.")
                         self.ui.add_log(f"Message from {address}: {message}")
                         response = self.controller.process_command(message)
+                        Logging.log(user=address, command=message, status="SUCCESS", message=f"Sent: {response.strip()}")
                         client_socket.sendall(response.encode('utf-8'))
                     except socket.timeout:
+                        Logging.log(user=address, command=message, status="TIMEOUT", message="Command was stopped due to timeout.")
                         self.ui.add_log(f"TIMEOUT {address}")
                         break
         except Exception as e:
+            Logging.log(user=address, command=message, status="FAILED", message="Something went wrong.")
             self.ui.add_log(f"THREAD ERROR: {e}")
 
         if address in self.active_users:
             self.active_users.remove(address)
         formatted_users = [f"{a[0]}:{a[1]}" for a in self.active_users]
         self.ui.update_user_list(formatted_users)
+        Logging.log(user=address, command=None, status="DISCONNECTED", message="User was disconnected.")
         self.ui.add_log(f"Client {address} disconnected.")
 
 
