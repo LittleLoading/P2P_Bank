@@ -52,7 +52,7 @@ class Server:
                             break
                         message = data.decode('utf-8').strip()
                         self.ui.add_log(f"Message from {address}: {message}")
-                        response = self.controller.proccess_command(message)
+                        response = self.controller.process_command(message)
                         client_socket.sendall(response.encode('utf-8'))
 
                     except socket.timeout:
