@@ -125,8 +125,8 @@ class Database:
 
     def commit(self):
         """
-        Safe comimit that tests if connection is working, checks first if connection exists
-        :return: nothng
+        Safe commit that tests if connection is working, checks first if connection exists
+        :return: nothing
         """
         if self.connection:
             try:
