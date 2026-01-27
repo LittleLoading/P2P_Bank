@@ -23,6 +23,7 @@ class Server:
         self.srv_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.srv_socket.bind((self.host, self.port))
         self.srv_socket.listen(5)
+        Logging.log(user=None, command=None, status="SERVER STARTED", message=f"Server running on {self.host}:{self.port}")
         self.ui.add_log(f"Server is running on {self.host}:{self.port}")
         while self.running:
             try:
