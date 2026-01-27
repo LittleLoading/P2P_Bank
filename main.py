@@ -17,13 +17,14 @@ def main():
         root.quit()
         root.destroy()
 
-    watcher = BankWatcher(root, shutdown_callback)
+    monitor = BankWatcher(root, shutdown_callback)
 
-    class DummyController:
-        def proccess_command(self, cmd):
-            return f"{cmd} OK\n"
+    def process_command(command):
+        return f"{command} OK\n"
 
-    server = Server(config["host"], config["port"], DummyController())
+    in_com = "BA"
+
+    server = Server(config["host"], config["port"], config["timeout"], process_command(in_com), monitor)
     thread = threading.Thread(target=server.start, daemon=True)
     thread.start()
 
