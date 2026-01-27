@@ -11,7 +11,7 @@ class JsonParser:
         :param relative_path: file name
         :return: path to file
         """
-        base_path = os.path.abspath(".")
+        base_path = os.path.abspath("..")
         return os.path.join(base_path, relative_path)
 
     @staticmethod
