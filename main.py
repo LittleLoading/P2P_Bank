@@ -1,4 +1,7 @@
 import threading
+
+from BankController import BankController
+from Database.Database import Database
 from Network.Server import Server
 from JsonParser import JsonParser
 from UI.BankWatcher import BankWatcher
@@ -10,6 +13,8 @@ def main():
     if not config:
         return
 
+    db = Database()
+
     root = tk.Tk()
 
     def shutdown_callback():
@@ -19,14 +24,13 @@ def main():
 
     watcher = BankWatcher(root, shutdown_callback)
 
-    class DummyController:
-        def proccess_command(self, cmd):
-            return f"{cmd} OK\n"
+    controller = BankController(config, db)
 
-    server = Server(config["host"], config["port"], DummyController())
+    server = Server(config["host"], config["port"], controller)
     thread = threading.Thread(target=server.start, daemon=True)
     thread.start()
 
+    print(f"[*] Bank Running {config['host']}:{config['port']}")
     root.mainloop()
 
 

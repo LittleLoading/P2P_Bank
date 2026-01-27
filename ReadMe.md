@@ -12,12 +12,12 @@ loggs and configuration files for connection.
     """
     try:
         base_path = resource_path()
-        file_path = os.path.join(base_path, "config.json")
+        file_path = os.path.join(base_path, "dbconfig.json")
         with open(file_path, "r") as file:
             db_config = json.load(file)
             return oracledb.connect(user=db_config["user"], password=db_config["password"], dsn=db_config["dsn"])
     except FileNotFoundError:
-        messagebox.showerror("Error", f"File config.json not found!")
+        messagebox.showerror("Error", f"File dbconfig.json not found!")
         return None
     except Exception as e:
         messagebox.showerror("Connection Error", f"Detail:\n{str(e)}")
