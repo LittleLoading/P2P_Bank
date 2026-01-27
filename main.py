@@ -22,7 +22,7 @@ def main():
         root.quit()
         root.destroy()
 
-    watcher = BankWatcher(root, shutdown_callback)
+    monitor = BankWatcher(root, shutdown_callback)
 
     controller = BankController(config, db)
 

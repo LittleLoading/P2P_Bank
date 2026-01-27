@@ -17,5 +17,5 @@ class Response:
         :param message: string error message
         :return: string
         """
-        return f"{message}\n"
+        return f"ERROR: {message}\n"
 

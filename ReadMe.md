@@ -1,8 +1,8 @@
-### P2P Bank
+# P2P Bank
 This project simulates banking processes and works with TCP connection as peer to peer. It uses database for saving 
 loggs and configuration files for connection.
 
-# Used from previous projects
+### Used from previous projects
 * Reading from configuration json file:
  ```python
   def get_connection():
@@ -23,4 +23,7 @@ loggs and configuration files for connection.
         messagebox.showerror("Connection Error", f"Detail:\n{str(e)}")
         return None
  ```
+
+### AI chats
+* About logs - [chat](https://gemini.google.com/app/c79f906a86f557c3?hl=cs)
   
