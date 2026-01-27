@@ -16,8 +16,7 @@ class Server:
 
     def start(self):
         """
-        Starts a server.
-        :return:
+        Starts a server and handles all clients parallely.
         """
         self.srv_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.srv_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -54,7 +53,6 @@ class Server:
                         self.ui.add_log(f"Message from {address}: {message}")
                         response = self.controller.process_command(message)
                         client_socket.sendall(response.encode('utf-8'))
-
                     except socket.timeout:
                         self.ui.add_log(f"TIMEOUT {address}")
                         break
@@ -65,7 +63,7 @@ class Server:
             self.active_users.remove(address)
         formatted_users = [f"{a[0]}:{a[1]}" for a in self.active_users]
         self.ui.update_user_list(formatted_users)
-        self.ui.add_log(f"Client {address} disconnected and cleaned up.")
+        self.ui.add_log(f"Client {address} disconnected.")
 
 
 
