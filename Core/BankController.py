@@ -1,6 +1,6 @@
 from Core.Response import Response
 from commands import BankCode, AccountCreate, AccountDeposit, AccountWithdrawal, AccountBalance, AccountRemove, \
-    BankAmount, BankClients
+    BankAmount, BankClients, RobberyPlan
 
 
 class BankController:
@@ -35,6 +35,8 @@ class BankController:
                 return BankAmount.execute(self.db)
             elif cmd_code == "BN":
                 return BankClients.execute(self.db)
+            elif cmd_code == "RP":
+                return RobberyPlan.execute(parts, self.config)
 
             else:
                 return Response.error(f"ER Command {cmd_code} not found.")
