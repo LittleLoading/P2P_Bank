@@ -36,7 +36,7 @@ class Server:
         :param address: client address
         :return:
         """
-        client_socket.settimeout(5)
+        client_socket.settimeout(100000)
         Response.success(f"new connection from:", f"{address}")
         with client_socket:
             while True:
