@@ -1,6 +1,7 @@
 import socket
 import threading
-from Response import Response
+from Core.Response import Response
+from Core.Logging import Logging
 
 
 class Server:
@@ -16,13 +17,13 @@ class Server:
 
     def start(self):
         """
-        Starts a server.
-        :return:
+        Starts a server and handles all clients parallely.
         """
         self.srv_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.srv_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.srv_socket.bind((self.host, self.port))
         self.srv_socket.listen(5)
+        Logging.log(user=None, command=None, status="SERVER STARTED", message=f"Server running on {self.host}:{self.port}")
         self.ui.add_log(f"Server is running on {self.host}:{self.port}")
         while self.running:
             try:
@@ -51,22 +52,22 @@ class Server:
                         if not data:
                             break
                         message = data.decode('utf-8').strip()
+                        Logging.log(user=address, command=message, status="RECEIVED", message="Command is being proceeded.")
                         self.ui.add_log(f"Message from {address}: {message}")
-                        response = self.controller.proccess_command(message)
-                        client_socket.sendall(response.encode('utf-8')+"\n")
-
+                        response = self.controller.process_command(message)
+                        Logging.log(user=address, command=message, status="SUCCESS", message=f"Sent: {response.strip()}")
+                        client_socket.sendall(response.encode('utf-8'))
                     except socket.timeout:
+                        Logging.log(user=address, command=message, status="TIMEOUT", message="Command was stopped due to timeout.")
                         self.ui.add_log(f"TIMEOUT {address}")
                         break
         except Exception as e:
+            Logging.log(user=address, command=message, status="FAILED", message="Something went wrong.")
             self.ui.add_log(f"THREAD ERROR: {e}")
 
         if address in self.active_users:
             self.active_users.remove(address)
         formatted_users = [f"{a[0]}:{a[1]}" for a in self.active_users]
         self.ui.update_user_list(formatted_users)
-        self.ui.add_log(f"Client {address} disconnected and cleaned up.")
-
-
-
-
+        Logging.log(user=address, command=None, status="DISCONNECTED", message="User was disconnected.")
+        self.ui.add_log(f"Client {address} disconnected.")
