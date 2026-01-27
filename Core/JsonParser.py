@@ -1,6 +1,6 @@
 import json
-import os
 from tkinter import messagebox
+from pathlib import Path
 
 
 class JsonParser:
@@ -11,8 +11,11 @@ class JsonParser:
         :param relative_path: file name
         :return: path to file
         """
-        base_path = os.path.abspath(".")
-        return os.path.join(base_path, relative_path)
+        cur_dir = Path(__file__).parent.resolve()
+        for directory in [cur_dir] + list(cur_dir.parents):
+            full_path = directory / relative_path
+            if full_path.exists():
+                return str(full_path)
 
     @staticmethod
     def get_config(filename):

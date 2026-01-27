@@ -3,7 +3,7 @@ import json
 import sys
 
 try:
-    from .db_init_script import INIT_SQL_COMMANDS
+    from db_init_script import INIT_SQL_COMMANDS
 except ImportError:
     INIT_SQL_COMMANDS = ""
 
@@ -24,17 +24,11 @@ class Database:
         self.cursor = None
 
         try:
-
-            #self.engine = mysql.connector.connect()
-
+            # self.engine = mysql.connector.connect()
             self.connect()
-
             if auto_init:
                 self._execute_script(INIT_SQL_COMMANDS)
-
-
         except mysql.connector.Error as err:
-
             if err.errno == 1049 and auto_init:
                 print("--> Database doesnt exist, making new one...")
                 self._create_database_and_tables()
@@ -58,7 +52,6 @@ class Database:
         except mysql.connector.Error as err:
             print(f"Failed to ensure DB exists: {err}")
             sys.exit(1)
-
 
     def _load_config(self, config_file):
         """
@@ -117,7 +110,7 @@ class Database:
 
     def _execute_script(self, script):
         """
-        executes a raw sql script with multiple commands, commands must be separated by ;
+        executes a raw sql script with multiple Commands, Commands must be separated by ;
         :param script:db init script
         :return:
         """
