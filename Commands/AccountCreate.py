@@ -2,6 +2,12 @@ from Core.Response import Response
 
 
 def execute(config, db):
+    """
+    create and insert new bank account to db
+    :param config: {'host': '127.0.0.1', 'port': 65525, 'timeout': 20} for myip address
+    :param db: database connection
+    :return: success or error response
+    """
     try:
         my_ip = config.get("host")
 
