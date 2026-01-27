@@ -1,6 +1,6 @@
 {
   "host": "127.0.0.1",
-  "user": "bankuser",
-  "password": "bankuser",
+  "user": "tester",
+  "password": "superidol2357",
   "database": "bank"
 }
