@@ -1,4 +1,4 @@
-from Response import Response
+from Core.Response import Response
 
 def execute(config):
     """

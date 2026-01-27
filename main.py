@@ -1,9 +1,9 @@
 import threading
 
-from BankController import BankController
+from Core.BankController import BankController
 from Database.Database import Database
 from Network.Server import Server
-from JsonParser import JsonParser
+from Core.JsonParser import JsonParser
 from UI.BankWatcher import BankWatcher
 import tkinter as tk
 

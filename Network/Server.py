@@ -1,6 +1,6 @@
 import socket
 import threading
-from Response import Response
+from Core.Response import Response
 
 
 class Server:
