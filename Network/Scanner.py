@@ -34,5 +34,6 @@ class NetworkScanner:
 
             for future in concurrent.futures.as_completed(futures):
                 res = future.result()
-                if res: found_banks.append(res)
+                if res:
+                    found_banks.append(res)
         return found_banks
