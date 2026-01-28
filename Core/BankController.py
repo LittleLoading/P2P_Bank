@@ -38,16 +38,15 @@ class BankController:
             elif cmd_code == "RP":
                 return RobberyPlan.execute(parts, self.config)
             elif cmd_code == "help" or cmd_code == "HELP":
-                return ("Your Options: \n"
-                        "BC  ->  bank code\n"
-                        "AC  ->  creation of an account\n"
-                        "AD  ->  deposit to the account (AD <account>/<ip> <value>)\n"
-                        "AW  ->  withdrawal from the account (AW <account>/<ip> <value>)\n"
-                        "AB  ->  balance of the account (AB <account>/<ip>)\n"
-                        "AR  ->  delete the account (AR <account>/<ip>)\n"
-                        "BA  ->  total balance of bank\n"
-                        "BN  ->  number of clients of the bank\n"
-                        )
+                return ("Your Options: \r\n"
+                        "BC  ->  bank code\r\n"
+                        "AC  ->  creation of an account\r\n"
+                        "AD  ->  deposit to the account (AD <account>/<ip> <value>)\r\n"
+                        "AW  ->  withdrawal from the account (AW <account>/<ip> <value>)\r\n"
+                        "AB  ->  balance of the account (AB <account>/<ip>)\r\n"
+                        "AR  ->  delete the account (AR <account>/<ip>)\r\n"
+                        "BA  ->  total balance of bank\r\n"
+                        "BN  ->  number of clients of the bank\r\n")
             else:
                 return Response.error(f"ER Command {cmd_code} not found.")
         except Exception as e:
