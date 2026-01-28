@@ -45,6 +45,10 @@ class Server:
         self.ui.add_log(f"Handling client: {address}")
         client_socket.settimeout(self.timeout)
         try:
+            intro = (
+                "\n Hello to the Bank \n Write help for further support \n"
+            )
+            client_socket.sendall(intro.encode("utf-8"))
             with client_socket:
                 while True:
                     try:
