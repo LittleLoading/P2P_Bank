@@ -1,5 +1,6 @@
 from Core.Response import Response
 
+
 def execute(db):
     """
     Command: BA
