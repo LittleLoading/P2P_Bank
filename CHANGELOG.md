@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-01-26 - Together
+* designed class diagrams 
+* discussed possible project architectures
+* planned the project and split work
+
+
 ## 2026-01-26 - David Houra
 * shared repo init
 
@@ -30,6 +36,13 @@
 * Server added needed attributes, like ui, timeout and list of active users. Completely rewrote method handle_client. Most logic remains same.
 * JsonParser changed method to be more usable.
 
-## 2026-01-28
+## 2026-01-28 - Nikola Poláchová
+* Upgraded UI to be more pleasant for users (dark mode, command support, clean modern feel).
+* Added introduction message with a little guidance in Server.py client_handle method.
+* New command help that displays available commands.
+* Made unit tests.
+* Completed ReadMe together.
+
+## 2026-01-28 - David
 * Fixed bugs with databse
-* Updated Readme file
+* Updated ReadMe file 
