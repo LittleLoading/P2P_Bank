@@ -8,12 +8,30 @@ loggs and configuration files for connection.
     pip install mysql-connector-python
   ```
 
-
 ## Database Setup
-1. Open MySQL Workbench and create database 'bank'.
-2. Create a new usage with all privileges to this database.
-3. Fill in the dbconfig.json right connection info.
-4. All done, now the project.
+1. **Connect:** Open MySQL Workbench and connect to the **root** connection.
+2. **Database**Open MySQL Workbench and create database called 'bank'
+3. **Navigate:** Go to **Administration** (left sidebar) -> **Users and Privileges**.
+4. **Add Account:** Click **Add Account** (bottom left).
+5. **Login Details:**
+   * **Login Name:** `bankuser`
+   * **Authentication Type:** Standard (Default)
+   * **Limit to Host Matching:** `%` (Default)
+   * **Password:** `bankUserPassword`
+6. **Schema Privileges:** * Go to the **Schema Privileges** tab for that user.
+   * Click **Add Entry**, select **Selected Schema**, and choose `bank`.
+7. **Permissions:** Select **"Select ALL"** (bottom right) to grant all permissions.
+8. **Finish:** Click **Apply**.
+
+inside the project than find dbconfig.json and fill it with the database connection credentials
+```json
+{
+  "host": "127.0.0.1",
+  "user": "<bankuser>",
+  "password": "<bankUserPassword>",
+  "database": "bank"
+}
+```
 
 ## Project Setup
 1. Open project file.
@@ -44,8 +62,29 @@ loggs and configuration files for connection.
         return None
  ```
 
+ * Database class (most of the methods)
+ ```python
+        def __init__(self, config_file='dbconfig.json', auto_init=True):
+        ....
+        def _ensure_database_exists(self):
+        ....
+        def _load_config(self, config_file):
+        ....
+        def connect(self):
+        ....
+        def _create_database_and_tables(self):
+        ....
+        def _execute_script(self, script):
+        ....
+        def commit(self):
+        ....
+        def close(self):
+        ....
+ ```
+
 ### AI chats
 * About logs - [chat](https://gemini.google.com/app/c79f906a86f557c3?hl=cs)
+* About Proxy and hacker mode [chat](https://gemini.google.com/share/9a91692a0b61)
 * Upgraded method for searching json files - [chat](https://gemini.google.com/app/b5fe04a1df9a980e)
 
 ## Authors
