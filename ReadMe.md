@@ -44,6 +44,26 @@ loggs and configuration files for connection.
         return None
  ```
 
+ * Database class (most of the methods)
+ ```python
+        def __init__(self, config_file='dbconfig.json', auto_init=True):
+        ....
+        def _ensure_database_exists(self):
+        ....
+        def _load_config(self, config_file):
+        ....
+        def connect(self):
+        ....
+        def _create_database_and_tables(self):
+        ....
+        def _execute_script(self, script):
+        ....
+        def commit(self):
+        ....
+        def close(self):
+        ....
+ ```
+
 ### AI chats
 * About logs - [chat](https://gemini.google.com/app/c79f906a86f557c3?hl=cs)
 * Upgraded method for searching json files - [chat](https://gemini.google.com/app/b5fe04a1df9a980e)
