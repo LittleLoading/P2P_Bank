@@ -2,10 +2,14 @@ import mysql.connector
 import json
 import sys
 
-try:
-    from db_init_script import INIT_SQL_COMMANDS
-except ImportError:
-    INIT_SQL_COMMANDS = ""
+INIT_SQL_COMMANDS = """
+    create table if not exists accounts(
+    id int primary key auto_increment,
+    account_number varchar(50) unique,
+    balance bigint default 0,
+    created_at timestamp default current_timestamp
+);
+"""
 
 
 class Database:
