@@ -13,7 +13,6 @@ def main():
         return
 
     db = Database()
-
     root = tk.Tk()
 
     def shutdown_callback():
