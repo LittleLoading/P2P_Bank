@@ -3,9 +3,13 @@ This project simulates banking processes and works with TCP connection as peer t
 loggs and configuration files for connection.
 
 ## Used Libraries
-* mysql
+* mysql - database lib
     ```python
     pip install mysql-connector-python
+  ```
+* sv-ttk - visual theme (dark mode)
+   ```
+   pip install sv-ttk
   ```
 
 ## Database Setup
