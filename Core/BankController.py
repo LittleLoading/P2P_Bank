@@ -37,7 +37,7 @@ class BankController:
                 return BankClients.execute(self.db)
             elif cmd_code == "RP":
                 return RobberyPlan.execute(parts, self.config)
-            elif cmd_code == "help" or "HELP":
+            elif cmd_code == "help" or cmd_code == "HELP":
                 return ("Your Options: \n"
                         "BC  ->  bank code\n"
                         "AC  ->  creation of an account\n"
@@ -48,7 +48,6 @@ class BankController:
                         "BA  ->  total balance of bank\n"
                         "BN  ->  number of clients of the bank\n"
                         )
-
             else:
                 return Response.error(f"ER Command {cmd_code} not found.")
         except Exception as e:
